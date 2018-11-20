@@ -57,6 +57,7 @@ public class Point3D implements Geom_element, Serializable
 	}
 	public double distance3D(Point3D p2) {
 		return this.distance3D(p2.x(), p2.y(), p2.z());}
+	
 	public double distance3D(double x, double y , double z)
 	{
 		double dx = _x-x;
@@ -236,5 +237,179 @@ public final static int DOWN = 6, UP = 7;
 	public static double r2d(double a) { return Math.toDegrees(a);}
 	/** transform from radians to angles */
 	public static double d2r(double a) { return Math.toRadians(a);}
-	////////////////////////////////////////////////////////////////////////////////
+
+
+
+	public Point3D meterToGps() {		
+
+
+
+		double	r = Math.sqrt(_x * _x + _y * _y + _z * _z);
+
+		double longitude = Math.acos(_x / Math.sqrt(_x * _x + _y * _y)) * (_y < 0 ? -1 : 1);
+
+		double latidude= Math.acos(_z / r);
+
+
+
+		return new Point3D (longitude,latidude);
+
+
+
+	}
+
+	public Point3D meterToGps1() {		
+
+		double radius = Math.sqrt(_x * _x + _y * _y + _z * _z);
+
+		double theta = Math.atan2(_y, _x);
+
+		double phi = Math.acos(_z / radius);
+
+
+
+		Point3D output = new Point3D (radius, theta, phi);
+
+
+
+		return  output;
+
+
+
+	}
+
+
+
+
+
+	public Point3D GpsToMeter () {	//https://stackoverflow.com/questions/10868135/cartesian-to-polar-3d-coordinates
+
+
+		final double r = 6371000;
+
+		double Gps_x = r * Math.sin(_x) * Math.cos(_y);
+
+		double Gps_y = r * Math.sin(_x) * Math.sin(_y);
+
+		double Gps_z =  Math.cos(_x);
+
+
+
+		return new Point3D(Gps_x,Gps_y,Gps_z);
+
+
+	}
+
+
+
+	public Point3D GeoToMer() { //https://www.colby.edu/chemistry/Colby%20Compass/AcqBathometricData.pdf
+
+	
+
+		double RadToDeg = 57.2957795132;
+
+		double q =Math.atan(_z/Math.sqrt((_x*_x+_y*_y)));
+
+
+
+		double DegToRad = 0.0174532925199;
+
+
+		double b = 6356752.3142; 
+
+
+
+		
+
+		double PI = 3.141592654;
+
+		double HALF_PI = 1.570796327;
+
+		double GeoToMerX = _x * DegToRad * b;
+
+		double	GeoToMerY = b * (Math.log((Math.tan((_y * DegToRad + HALF_PI) * 0.5))));
+
+		double Gps_z =  Math.cos(_x);
+
+		System.out.println(GeoToMerY);
+
+		Point3D p = new Point3D(GeoToMerX, GeoToMerY,Gps_z);
+
+
+
+		return p ;}
+
+
+
+
+
+
+
+
+
+	public Point3D MerToGeo() { // https://www.colby.edu/chemistry/Colby%20Compass/AcqBathometricData.pdf
+
+
+
+		double	RadToDeg = 57.29577951322447;
+
+		double DegToRad = 0.0174532925199;
+
+		double b = 6356752.3142;
+
+		double	PI = 3.141592654;
+
+		double q =Math.atan(_z/Math.sqrt((_x*_x+_y*_y)));
+
+		double	HALF_PI = 1.570796327;
+
+		double MerToGeoLong = _x * RadToDeg / b;
+
+		double MerToGeoLat = RadToDeg * (2 * Math.atan(Math.exp(_y / b)) - HALF_PI);
+
+		double nn =Math.atan(_z/Math.sqrt((_x*_x+_y*_y)));
+
+		double z = b * Math.cos(q);
+
+		
+
+		Point3D output = new Point3D(MerToGeoLong,MerToGeoLat,z);	
+
+		
+
+		return output;
+
+
+
+
+
+	}
+
+	public Point3D meterToGps2() {	
+
+		double r = Math.sqrt(_x * _x + _y * _y + _z * _z);
+
+		double q =Math.atan(_z/Math.sqrt((_x*_x+_y*_y)));
+
+		double f = Math.atan(_y/_x);
+
+
+
+		double x = r * Math.sin(q)* Math.cos(f);
+
+		double y = r * Math.sin(q) * Math.sin(f);
+
+		double z = r * Math.cos(q);
+
+
+
+		Point3D output = new Point3D(x,y,z);
+
+
+
+		return output;
+
+
+
+	}
 }
