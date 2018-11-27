@@ -41,6 +41,7 @@ public class MyCoords {
 		Point3D p0 = gps0.GpsToMeter();
 
 		Point3D p1 = gps1.GpsToMeter();
+		//return gps0.distance3D(gps1);
 
 		return p0.distance3D(p1);
 
@@ -92,8 +93,8 @@ public class MyCoords {
 		
 		return((
 				(Math.abs(p.y())<180)
-				||(Math.abs(p.x()))<90) 
-				||(p.z()<-450));
+				&&(Math.abs(p.x()))<90) 
+				&&(p.z()>=-450));
 
 	}
 
