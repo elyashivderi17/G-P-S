@@ -45,7 +45,7 @@ public class layer implements GIS_layer {
 	@Override
 	public Iterator<GIS_element> iterator() {
 		// TODO Auto-generated method stub
-		return null;
+		return arr.iterator();
 	}
 
 	@Override
@@ -89,5 +89,16 @@ public class layer implements GIS_layer {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	public String toString() {
+	//	ArrayList<String>str=new ArrayList<>();
+		String s="";
+		//String str="";
+		Iterator<GIS_element> runner=this.iterator();
+		while(runner.hasNext()) {
+			s=runner.next().toString();
+			System.out.println(s);
+			//str+=s;
+		}
+		return s;
+	}
 }

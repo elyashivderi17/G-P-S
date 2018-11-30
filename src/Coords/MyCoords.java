@@ -15,9 +15,9 @@ import com.sun.javafx.scene.paint.GradientUtils.Point;
 
 
 
-public class MyCoords {
+public class MyCoords implements coords_converter {
 
-	public static Point3D add2(Point3D gps, Point3D local_vector_in_meter) {
+	public Point3D add(Point3D gps, Point3D local_vector_in_meter) {
 
 		Point3D meter= gps.GeoToMer();
 
@@ -89,7 +89,7 @@ public class MyCoords {
 
 	 */
 
-	public static boolean isValid_GPS_Point(Point3D p) {
+	public boolean isValid_GPS_Point(Point3D p) {
 		
 		return((
 				(Math.abs(p.y())<180)

@@ -4,18 +4,46 @@ import Geom.Geom_element;
 import Geom.Point3D;
 
 public class element implements GIS_element {
-	private String MAC , SSID , AuthMode , FirstSeen , Channel , RSSI ,CurrentLatitude,AltitudeMeters, AccuracyMeters , Type;
-	
+	private String MAC , SSID , AuthMode , FirstSeen , Channel , RSSI ,CurrentLatitude,CurrentLongitude ,AltitudeMeters, AccuracyMeters , Type;
+	private Point3D geom;
+	private Meta_data data;
+	public element(String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String CurrentLatitude,String CurrentLongitude,String AltitudeMeters,String AccuracyMeters ,String Type) {
+		setMAC(MAC);
+		setSSID(SSID);
+		setAuthMode(AuthMode);
+		setFirstSeen(FirstSeen);
+		setChannel(Channel);
+		setRSSI(RSSI);
+		setCurrentLatitude(CurrentLatitude);
+		setCurrentLongitude(CurrentLongitude);
+		setAltitudeMeters(AltitudeMeters);
+		setAccuracyMeters(AccuracyMeters);
+		setType(Type);
+	}
+	public element() {//îä ìòùåú ôä òí geom åmetadata?
+		this.MAC=null;
+		this.SSID=null;
+		this.AuthMode=null;
+		this.FirstSeen=null;
+		this.Channel=null;
+		this.RSSI=null;
+		this.CurrentLatitude=null;
+		this.CurrentLongitude=null;
+		this.AltitudeMeters=null;
+		this.AccuracyMeters=null;
+		this.Type=null;
+		// TODO Auto-generated constructor stub
+	}
 	@Override
-	public Geom_element getGeom() {//çñø
+	public Geom_element getGeom() {
 		// TODO Auto-generated method stub
-		return null;
+		return geom;
 	}
 
 	@Override
-	public Meta_data getData() {//çñø
+	public Meta_data getData() {
 		// TODO Auto-generated method stub
-		return null;
+		return data;
 	}
 
 	@Override
@@ -103,6 +131,22 @@ public class element implements GIS_element {
 	public void setChannel(String channel) {
 		Channel = channel;
 	}
-	
+	public String getCurrentLongitude() {
+		return CurrentLongitude;
+	}
+	public void setCurrentLongitude(String currentLongitude) {
+		CurrentLongitude = currentLongitude;
+	}
+	public void setGeom(Point3D geom) {
+		this.geom = geom;
+	}
+	public void setData(Meta_data data) {
+		this.data = data;
+	}
+	public String toString() {
+		String s=MAC+","+ SSID+","+AuthMode+","+FirstSeen+","+Channel+","+RSSI+","+CurrentLatitude+","+CurrentLongitude+","+AltitudeMeters+","+AccuracyMeters+","+Type+". ";
+		System.out.println(s);
+		return s;
+	}
 
 }
