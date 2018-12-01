@@ -5,9 +5,10 @@ import Geom.Point3D;
 
 public class element implements GIS_element {
 	private String MAC , SSID , AuthMode , FirstSeen , Channel , RSSI ,CurrentLatitude,CurrentLongitude ,AltitudeMeters, AccuracyMeters , Type;
-	private Point3D geom;
+	private Geom_element geom;
 	private Meta_data data;
-	public element(String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String CurrentLatitude,String CurrentLongitude,String AltitudeMeters,String AccuracyMeters ,String Type) {
+	public element(Geom_element g,String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String CurrentLatitude,String CurrentLongitude,String AltitudeMeters,String AccuracyMeters ,String Type) {
+		setGeom(g);
 		setMAC(MAC);
 		setSSID(SSID);
 		setAuthMode(AuthMode);
@@ -20,7 +21,8 @@ public class element implements GIS_element {
 		setAccuracyMeters(AccuracyMeters);
 		setType(Type);
 	}
-	public element() {//Ó‰ ÏÚ˘Â˙ Ù‰ ÚÌ geom Âmetadata?
+	public element(Geom_element g) {
+		this.geom=g;
 		this.MAC=null;
 		this.SSID=null;
 		this.AuthMode=null;
@@ -137,8 +139,8 @@ public class element implements GIS_element {
 	public void setCurrentLongitude(String currentLongitude) {
 		CurrentLongitude = currentLongitude;
 	}
-	public void setGeom(Point3D geom) {
-		this.geom = geom;
+	public void setGeom(Geom_element g) {
+		this.geom = g;
 	}
 	public void setData(Meta_data data) {
 		this.data = data;

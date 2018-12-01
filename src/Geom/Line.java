@@ -33,6 +33,10 @@ public class Line implements Geom_element {
          return Math.abs((l2.x() - l1.x())*(l1.y() - p.y()) - (l1.x() - p.x())*(l2.y() - l1.y()))/
                  Math.sqrt(Math.pow(l2.x() - l1.x(), 2) + Math.pow(l2.y() - l1.y(), 2));
 	}
+	// given a line based on two points3d, and a point3d away from the line,
+    // find the perpendicular distance from the point to the line.
+    // see http://mathworld.wolfram.com/Point-LineDistance3-Dimensional.html
+    // for explanation and defination.
 	private static double dist3d(Line a,Point3D p) {
 	        double[] PointThing = new double[3];
 	        double[] TotalThing = new double[3];
