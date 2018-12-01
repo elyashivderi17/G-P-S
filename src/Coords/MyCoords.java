@@ -21,15 +21,15 @@ public class MyCoords implements coords_converter {
 
 		Point3D meter= gps.GeoToMer();
 
-				System.out.println(meter.toString());
+		System.out.println(meter.toString());
 
 		meter.add(local_vector_in_meter);
 
-				System.out.println(meter.toString());
+		System.out.println(meter.toString());
 
 		Point3D outputGps = meter.MerToGeo();
 
-				System.out.println(outputGps.toString());
+		System.out.println(outputGps.toString());
 
 		return outputGps;
 
@@ -90,7 +90,7 @@ public class MyCoords implements coords_converter {
 	 */
 
 	public boolean isValid_GPS_Point(Point3D p) {
-		
+
 		return((
 				(Math.abs(p.y())<180)
 				&&(Math.abs(p.x()))<90) 

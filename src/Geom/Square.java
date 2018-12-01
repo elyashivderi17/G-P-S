@@ -27,7 +27,7 @@ public class Square implements Geom_element {
 		public double distance2D(Point3D p) {
 			return min(p.distance2D(a), p.distance2D(b),p.distance2D(c),p.distance2D(d));
 		}
-		private static double min(double a,double b,double c,double d) {
+		private double min(double a,double b,double c,double d) {
 			double min=Math.min(a, b);
 			double min2=Math.min(c, d);
 			return Math.min(min, min2);

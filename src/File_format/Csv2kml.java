@@ -63,7 +63,7 @@ public class Csv2kml {
 		writeFileKML(a, kmlPath);
 	}
 	//public static void main(String[] args) {
-//
+	//
 	//	convertCsv2Kml("C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 2\\Ex2\\data\\WigleWifi_20171203085618.csv","C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 2\\Ex2\\data\\WigleWifi_20171203085618.kml");
 	//}
 }

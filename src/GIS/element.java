@@ -7,8 +7,24 @@ public class element implements GIS_element {
 	private String MAC , SSID , AuthMode , FirstSeen , Channel , RSSI ,CurrentLatitude,CurrentLongitude ,AltitudeMeters, AccuracyMeters , Type;
 	private Geom_element geom;
 	private Meta_data data;
-	public element(Geom_element g,String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String CurrentLatitude,String CurrentLongitude,String AltitudeMeters,String AccuracyMeters ,String Type) {
+	public element(Geom_element g,metaData metadata,String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String CurrentLatitude,String CurrentLongitude,String AltitudeMeters,String AccuracyMeters ,String Type) {
+		setData(metadata);
 		setGeom(g);
+		setMAC(MAC);
+		setSSID(SSID);
+		setAuthMode(AuthMode);
+		setFirstSeen(FirstSeen);
+		setChannel(Channel);
+		setRSSI(RSSI);
+		setCurrentLatitude(CurrentLatitude);
+		setCurrentLongitude(CurrentLongitude);
+		setAltitudeMeters(AltitudeMeters);
+		setAccuracyMeters(AccuracyMeters);
+		setType(Type);
+	}
+	public element(String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String CurrentLatitude,String CurrentLongitude,String AltitudeMeters,String AccuracyMeters ,String Type) {
+		setData(null);
+		setGeom(null);
 		setMAC(MAC);
 		setSSID(SSID);
 		setAuthMode(AuthMode);
@@ -34,24 +50,21 @@ public class element implements GIS_element {
 		this.AltitudeMeters=null;
 		this.AccuracyMeters=null;
 		this.Type=null;
-		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public Geom_element getGeom() {
-		// TODO Auto-generated method stub
 		return geom;
 	}
 
 	@Override
 	public Meta_data getData() {
-		// TODO Auto-generated method stub
 		return data;
 	}
 
 	@Override
 	public void translate(Point3D vec) {//חסר
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public String getCurrentLatitude() {

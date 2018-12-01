@@ -26,5 +26,5 @@ public interface coords_converter {
 	 * @return
 	 */
 	public boolean isValid_GPS_Point(Point3D p);
-	
+
 }

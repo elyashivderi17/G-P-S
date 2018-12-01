@@ -32,7 +32,7 @@ public class CSVReader {
 		}
 		return l;
 	}
-	//public static void main(String[] args) {
-	//System.out.println(CsvReader("C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 2\\Ex2\\data\\WigleWifi_20171201110209.csv").toString());
-	//}
+	public static void main(String[] args) {
+		System.out.println(CsvReader("C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 2\\Ex2\\data\\WigleWifi_20171201110209.csv").toString());
+	}
 }

@@ -50,7 +50,7 @@ public class MultiCSV {
 	}
 
 	//public static void main(String[] args) {
-		//project p=multicsv("C:\\Users\\barge\\eclipse-workspace\\G-P-S\\data");
-		//multcsv2kml(p,"C:\\Users\\barge\\eclipse-workspace\\G-P-S\\data");
+	//project p=multicsv("C:\\Users\\barge\\Desktop\\‏‏תיקיה חדשה");
+	//multcsv2kml(p,"C:\\Users\\barge\\Desktop\\‏‏תיקיה חדשה");
 	//}
 }

@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class layer implements GIS_layer {
-	ArrayList<GIS_element> arr = new ArrayList<GIS_element>();
+	private ArrayList<GIS_element> arr = new ArrayList<GIS_element>();
 	@Override
 	public boolean add(GIS_element arg0) {
 		return arr.add(arg0);
@@ -38,25 +38,21 @@ public class layer implements GIS_layer {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
 		return arr.isEmpty();
 	}
 
 	@Override
 	public Iterator<GIS_element> iterator() {
-		// TODO Auto-generated method stub
 		return arr.iterator();
 	}
 
 	@Override
 	public boolean remove(Object arg0) {
-		// TODO Auto-generated method stub
 		return arr.remove(arg0);
 	}
 
 	@Override
 	public boolean removeAll(Collection<?> arg0) {
-		// TODO Auto-generated method stub
 		return arr.removeAll(arg0);
 	}
 
@@ -74,20 +70,25 @@ public class layer implements GIS_layer {
 
 	@Override
 	public Object[] toArray() {
-		// TODO Auto-generated method stub
-		return null;
+		Iterator<GIS_element>runner=arr.iterator();
+		GIS_element[]arr=new element[size()];
+		for(int i=0;i<size();i++) {
+			if(runner.hasNext())
+				arr[i]=runner.next();
+		}
+		return arr;
 	}
 
 	@Override
 	public <T> T[] toArray(T[] arg0) {
 		// TODO Auto-generated method stub
-		return null;
+		return null;//חסר
 	}
 
 	@Override
 	public Meta_data get_Meta_data() {
 		// TODO Auto-generated method stub
-		return null;
+		return null;//חסר
 	}
 	public String toString() {
 		String s="";
