@@ -23,7 +23,7 @@ public class MultiCSV {
 		}
 		pw.write(p.toString());
 		pw.close();
-		
+
 		Csv2kml.convertCsv2Kml(newfilepath,kmlpath);
 		System.out.println("done");
 	}
@@ -42,15 +42,15 @@ public class MultiCSV {
 			}
 			else {
 				if(f.getName().contains(".csv")) {
-				p.add(CSVReader.CsvReader(f.getAbsolutePath()));
+					p.add(CSVReader.CsvReader(f.getAbsolutePath()));
+				}
 			}
 		}
-	}
 		return p;
-}
-	
-	public static void main(String[] args) {
-		project p=multicsv("C:\\Users\\barge\\Desktop\\‏‏תיקיה חדשה");
-		multcsv2kml(p,"C:\\Users\\barge\\Desktop\\‏‏תיקיה חדשה");
 	}
+
+	//public static void main(String[] args) {
+		//project p=multicsv("C:\\Users\\barge\\eclipse-workspace\\G-P-S\\data");
+		//multcsv2kml(p,"C:\\Users\\barge\\eclipse-workspace\\G-P-S\\data");
+	//}
 }
