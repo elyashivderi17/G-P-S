@@ -13,26 +13,22 @@ public class layer implements GIS_layer {
 
 	@Override
 	public boolean addAll(Collection<? extends GIS_element> arg0) {
-		// TODO Auto-generated method stub
 		return arr.addAll(arg0);
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
 		arr.clear();
 		System.out.println("done, the array clear");
 	}
 
 	@Override
 	public boolean contains(Object arg0) {
-		// TODO Auto-generated method stub
 		return arr.contains(arg0);
 	}
 
 	@Override
 	public boolean containsAll(Collection<?> arg0) {
-		// TODO Auto-generated method stub
 		return arr.containsAll(arg0);
 	}
 
@@ -58,13 +54,11 @@ public class layer implements GIS_layer {
 
 	@Override
 	public boolean retainAll(Collection<?> arg0) {
-		// TODO Auto-generated method stub
 		return arr.retainAll(arg0);
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
 		return arr.size();
 	}
 

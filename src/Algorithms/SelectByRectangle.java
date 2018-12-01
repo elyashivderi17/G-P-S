@@ -39,17 +39,20 @@ public class SelectByRectangle {
 
 		Double[] distances = new Double[7];
 		Iterator<GIS_element>runner=l.iterator();
+		double xmid=(start.x()+end.x())/2;
+		double ymid=(start.y()+end.y())/2;
+		double zmid=(start.z()+end.z())/2;
+		Point3D mid=new Point3D(xmid,ymid,zmid);
 		for(int i = 0;i<8;i++) {
 			distances[i] = g.distance3D(edges[i]);
 			while(runner.hasNext()) {
 				GIS_element gis=runner.next();
 				Geom_element e=gis.getGeom();
 				if(e.distance3D(edges[i])==0) return true;
+				if(e.distance3D(mid)<=mid.distance3D(start)) return true;
 			}
-			runner=l.iterator();//לסיים לחשב אם המרחק את המרכז ולא רק קודקודים
+			runner=l.iterator();
 		}
-		
 		return false;
-
 	}
 }

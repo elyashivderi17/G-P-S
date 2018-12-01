@@ -1,44 +1,34 @@
 package GIS;
 
+import Coords.MyCoords;
 import Geom.Geom_element;
 import Geom.Point3D;
 
 public class element implements GIS_element {
 	private String MAC , SSID , AuthMode , FirstSeen , Channel , RSSI ,CurrentLatitude,CurrentLongitude ,AltitudeMeters, AccuracyMeters , Type;
-	private Geom_element geom;
+	private Point3D p;
 	private Meta_data data;
-	public element(Geom_element g,metaData metadata,String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String CurrentLatitude,String CurrentLongitude,String AltitudeMeters,String AccuracyMeters ,String Type) {
-		setData(metadata);
-		setGeom(g);
-		setMAC(MAC);
-		setSSID(SSID);
-		setAuthMode(AuthMode);
-		setFirstSeen(FirstSeen);
-		setChannel(Channel);
-		setRSSI(RSSI);
-		setCurrentLatitude(CurrentLatitude);
-		setCurrentLongitude(CurrentLongitude);
-		setAltitudeMeters(AltitudeMeters);
-		setAccuracyMeters(AccuracyMeters);
-		setType(Type);
-	}
 	public element(String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String CurrentLatitude,String CurrentLongitude,String AltitudeMeters,String AccuracyMeters ,String Type) {
-		setData(null);
-		setGeom(null);
 		setMAC(MAC);
 		setSSID(SSID);
 		setAuthMode(AuthMode);
 		setFirstSeen(FirstSeen);
 		setChannel(Channel);
 		setRSSI(RSSI);
+		setAccuracyMeters(AccuracyMeters);
+		setType(Type);
 		setCurrentLatitude(CurrentLatitude);
 		setCurrentLongitude(CurrentLongitude);
 		setAltitudeMeters(AltitudeMeters);
-		setAccuracyMeters(AccuracyMeters);
-		setType(Type);
+		setgeom(CurrentLatitude,CurrentLongitude,AltitudeMeters);
+		data=new metaData();;
 	}
-	public element(Geom_element g) {
-		this.geom=g;
+
+	public void setgeom(String currentLatitude2, String currentLongitude2, String altitudeMeters2) {
+		p=new Point3D(Double.parseDouble(CurrentLatitude),Double.parseDouble(CurrentLongitude),Double.parseDouble(AltitudeMeters));
+
+	}
+	public element() {
 		this.MAC=null;
 		this.SSID=null;
 		this.AuthMode=null;
@@ -53,7 +43,7 @@ public class element implements GIS_element {
 	}
 	@Override
 	public Geom_element getGeom() {
-		return geom;
+		return p;
 	}
 
 	@Override
@@ -62,9 +52,10 @@ public class element implements GIS_element {
 	}
 
 	@Override
-	public void translate(Point3D vec) {//חסר
-		// TODO Auto-generated method stub
-
+	public void translate(Point3D vec) {
+		MyCoords m=new MyCoords();
+		Point3D p=m.add(this.p,vec );
+		this.p=new Point3D(p);
 	}
 
 	public String getCurrentLatitude() {
@@ -151,9 +142,6 @@ public class element implements GIS_element {
 	}
 	public void setCurrentLongitude(String currentLongitude) {
 		CurrentLongitude = currentLongitude;
-	}
-	public void setGeom(Geom_element g) {
-		this.geom = g;
 	}
 	public void setData(Meta_data data) {
 		this.data = data;
