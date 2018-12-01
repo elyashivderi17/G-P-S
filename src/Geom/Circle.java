@@ -9,12 +9,12 @@ public class Circle implements Geom_element {
 		this.set_cen(cen);
 		this.set_radius(rad);
 	}
-	public Circle(int x,int y,int z,double rad) {
+	public Circle(double x,double y,int z,double rad) {
 		Point3D p=new Point3D(x,y,z);
 		this.set_cen(p);
 		this.set_radius(rad);
 	}
-	public Circle(int x,int y,double rad) {
+	public Circle(double x,double y,double rad) {
 		Point3D p=new Point3D(x,y);
 		this.set_cen(p);
 		this.set_radius(rad);
