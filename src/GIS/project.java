@@ -6,6 +6,10 @@ import java.util.Iterator;
 
 public class project implements GIS_project{
 	ArrayList<GIS_layer> arr = new ArrayList<GIS_layer>();
+	public project() {
+		this.arr=new ArrayList<GIS_layer>();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public boolean add(GIS_layer e) {
 		// TODO Auto-generated method stub
@@ -46,7 +50,7 @@ public class project implements GIS_project{
 	@Override
 	public Iterator<GIS_layer> iterator() {
 		// TODO Auto-generated method stub
-		return null;
+		return arr.iterator();
 	}
 
 	@Override
@@ -90,5 +94,12 @@ public class project implements GIS_project{
 		// TODO Auto-generated method stub
 		return null;//חסר
 	}
-
+	public String toString() {
+		String s="";
+		Iterator<GIS_layer> runner=this.iterator();
+		while(runner.hasNext()) {
+			s+=runner.next().toString();
+		}
+		return s;
+	}
 }

@@ -49,9 +49,6 @@ public class Csv2kml {
             while ((line = br.readLine()) != null) 
             {
             	a.add(line.split(","));
-                //String[] userInfo = line.split(cvsSplitBy);
-               //element e=new element(userInfo[0],userInfo[1],userInfo[2],userInfo[3],userInfo[4],userInfo[5],userInfo[6],userInfo[7],userInfo[8],userInfo[9],userInfo[10]);
-               //l.add(e);
             }
 
         } catch (IOException e) 

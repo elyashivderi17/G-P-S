@@ -10,10 +10,8 @@ import GIS.layer;
 
 public class CSVReader {
 	 layer l=new layer();
-	//private String MAC , SSID , AuthMode , FirstSeen , Channel , RSSI ,CurrentLatitude,AltitudeMeters, AccuracyMeters , Type;
     public static layer CsvReader(String CsvFile) 
     {
-       // String csvFile = "C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 2\\Ex2\\data\\WigleWifi_20171201110209.csv";
         String line = "";
         String cvsSplitBy = ",";
         layer l=new layer();
@@ -35,7 +33,6 @@ public class CSVReader {
         return l;
     }
     public static void main(String[] args) {
-    	
-		CsvReader("C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 2\\Ex2\\data\\WigleWifi_20171201110209.csv");
+		System.out.println(CsvReader("C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 2\\Ex2\\data\\WigleWifi_20171201110209.csv").toString());
 	}
 }

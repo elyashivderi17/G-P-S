@@ -90,14 +90,11 @@ public class layer implements GIS_layer {
 		return null;
 	}
 	public String toString() {
-	//	ArrayList<String>str=new ArrayList<>();
 		String s="";
-		//String str="";
 		Iterator<GIS_element> runner=this.iterator();
 		while(runner.hasNext()) {
-			s=runner.next().toString();
-			System.out.println(s);
-			//str+=s;
+			s+=runner.next().toString();
+			s+="\n";
 		}
 		return s;
 	}

@@ -144,8 +144,7 @@ public class element implements GIS_element {
 		this.data = data;
 	}
 	public String toString() {
-		String s=MAC+","+ SSID+","+AuthMode+","+FirstSeen+","+Channel+","+RSSI+","+CurrentLatitude+","+CurrentLongitude+","+AltitudeMeters+","+AccuracyMeters+","+Type+". ";
-		System.out.println(s);
+		String s=MAC+","+ SSID+","+AuthMode+","+FirstSeen+","+Channel+","+RSSI+","+CurrentLatitude+","+CurrentLongitude+","+AltitudeMeters+","+AccuracyMeters+","+Type;
 		return s;
 	}
 
