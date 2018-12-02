@@ -6,16 +6,9 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import Coords.MyCoords;
-
 import Geom.Point3D;
 
-
-
-class MyCoordsTest {
-
-
-
+class Tests {
 	@Test
 
 	void testAdd() {
@@ -117,7 +110,5 @@ class MyCoordsTest {
 		fail("the 'IsValid_GPS_Point' function doesnt work well");
 
 	}
-
-
 
 }
