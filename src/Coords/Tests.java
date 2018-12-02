@@ -29,8 +29,6 @@ class Tests {
 		}
 	}
 
-
-
 	@Test
 	void testDistance3d() {
 
@@ -47,10 +45,7 @@ class Tests {
 			fail("the 'Distance3d' function doesnt work well");
 
 		}
-
 	}
-
-
 
 	@Test
 
