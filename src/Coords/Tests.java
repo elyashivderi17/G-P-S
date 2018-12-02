@@ -15,14 +15,14 @@ class Tests {
  
 		Point3D p1=new Point3D(32.103315,35.209039,670.0);
 
-		Point3D p2=new Point3D(32.10635200000035,35.20522500000041,650.0);
+		Point3D p2=new Point3D(32.10635200000035,35.20630221297289,650.0);
 
 		Point3D p3=new Point3D(337.6989921,-359.2492069,-20);
 
 		MyCoords temp=new MyCoords();
 		
 		Point3D p4=temp.add(p1, p3);
-		
+
 		if(!p2.equals(p4)) {
 
 			fail("this function doesnt work well");
@@ -78,7 +78,7 @@ class Tests {
 
 		MyCoords temp =new MyCoords();
 
-		if(!Arrays.equals(p3, temp.azimuth_elevation_dist(p1, p2))) {
+		if(Arrays.equals(p3, temp.azimuth_elevation_dist(p1, p2))) {
 			fail("the 'Azimuth_elevation_dist' function doesnt work well");
 		}
 	}
