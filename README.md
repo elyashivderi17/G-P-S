@@ -20,9 +20,9 @@ Package of Geometry that inclodes: Point3D , Line , Path , Circle , and Square.
 ### GIS: 
 Geographic information system, divided to layers, with refernce to time, place text and color. 
 
-# How do you calculate azimuth?
+### How do you calculate azimuth?
 https://susdesign.com/popups/sunangle/azimuth.php
 
 
-# That's a distance?
+### That's a distance?
 https://he.wikipedia.org/wiki/מרחק
