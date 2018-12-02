@@ -4,10 +4,16 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+/**
+ * This class convert single csv file to kml file.
+ */
 
 public class Csv2kml {
-	
+	/**
+	 * This help function write all the lines in new kml.
+	 * @param a ArrayList<String[]> with all the lines that we copy from the csv.
+	 * @param output the name of the new kml.
+	 */
 	private static void writeFileKML(ArrayList<String[]> a, String output) {
 		ArrayList<String> content = new ArrayList<String>();
 		String kmlstart = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -39,7 +45,11 @@ public class Csv2kml {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * This help function copy all the lines in the csv to a new arraylist of strings[].
+	 * @param csvPath the path of the csv that we want to convert.
+	 * @return a ArrayList<String[]> with all the lines that we copy from the csv.
+	 */
 	private static ArrayList<String[]> getCSVList(String csvPath){
 		ArrayList<String[]> a = new ArrayList<String[]>();
 		String line = "";
@@ -59,7 +69,11 @@ public class Csv2kml {
 		}
 		return a;
 	}
-
+	/**
+	 * This function convert csv file to kml.
+	 * @param csvPath the path of the csv that we want to convert.
+	 * @param kmlPath the path of new kml that we create.
+	 */
 	public static void convertCsv2Kml(String csvPath, String kmlPath) {
 		ArrayList<String[]> a = getCSVList(csvPath);
 		writeFileKML(a, kmlPath);

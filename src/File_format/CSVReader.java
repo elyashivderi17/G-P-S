@@ -7,9 +7,16 @@ import java.io.IOException;
 import GIS.element;
 import GIS.layer;
 
-
+/**
+ * This class read from csv and insert all the data to layer.
+ */
 public class CSVReader {
-	layer l=new layer();
+	private layer l=new layer();
+	/**
+	 * This function make a new csv file "allkml.csv" 
+	 * @param CsvFile the path of csv file that we want to read from him.
+	 * @return layer l with all data from the csv.
+	 */
 	public static layer CsvReader(String CsvFile) 
 	{
 		String line = "";
@@ -31,8 +38,5 @@ public class CSVReader {
 			e.printStackTrace();
 		}
 		return l;
-	}
-	public static void main(String[] args) {
-		System.out.println(CsvReader("C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 2\\Ex2\\data\\WigleWifi_20171201110209.csv").toString());
 	}
 }
