@@ -3,7 +3,12 @@ package GIS;
 import Coords.MyCoords;
 import Geom.Geom_element;
 import Geom.Point3D;
-
+/**
+ * This class represents a element with  geometric representation and meta data such as:
+ * Orientation, color, string, timing...
+ * @author Bar Genish
+ * @author Elyashiv Deri
+ */
 public class element implements GIS_element {
 	private String MAC , SSID , AuthMode , FirstSeen , Channel , RSSI ,CurrentLatitude,CurrentLongitude ,AltitudeMeters, AccuracyMeters , Type;
 	private Point3D p;
