@@ -1,5 +1,3 @@
-# G-P-S
-Project - GPS
 the tasks written by:
 Bar genish - 313174583
 elyashiv deri - 305368433
