@@ -23,23 +23,28 @@ public class element implements GIS_element {
 		setgeom(CurrentLatitude,CurrentLongitude,AltitudeMeters);
 		data=new metaData();;
 	}
+	public element(Point3D p,metaData m,String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String AccuracyMeters ,String Type) {
+		setMAC(MAC);
+		setSSID(SSID);
+		setAuthMode(AuthMode);
+		setFirstSeen(FirstSeen);
+		setChannel(Channel);
+		setRSSI(RSSI);
+		setAccuracyMeters(AccuracyMeters);
+		setType(Type);
+		setCurrentLatitude(CurrentLatitude);
+		setCurrentLongitude(CurrentLongitude);
+		setAltitudeMeters(AltitudeMeters);
+		setgeom(p);
+		data=new metaData(m);;
+	}
 
 	public void setgeom(String currentLatitude2, String currentLongitude2, String altitudeMeters2) {
 		p=new Point3D(Double.parseDouble(CurrentLatitude),Double.parseDouble(CurrentLongitude),Double.parseDouble(AltitudeMeters));
 
 	}
-	public element() {
-		this.MAC=null;
-		this.SSID=null;
-		this.AuthMode=null;
-		this.FirstSeen=null;
-		this.Channel=null;
-		this.RSSI=null;
-		this.CurrentLatitude=null;
-		this.CurrentLongitude=null;
-		this.AltitudeMeters=null;
-		this.AccuracyMeters=null;
-		this.Type=null;
+	public void setgeom(Point3D p2) {
+		p=new Point3D(p2);
 	}
 	@Override
 	public Geom_element getGeom() {
