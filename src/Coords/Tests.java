@@ -20,8 +20,8 @@ class Tests {
 		Point3D p3=new Point3D(337.6989921,-359.2492069,-20);
 
 		MyCoords m=new MyCoords();
-
-		if(!p2.equals(m.add(p1, p3))) {
+		Point3D p4=m.add(p1, p3);
+		if(!p2.equals(p4)) {
 
 			fail("this function doesnt work well");
 
@@ -107,7 +107,7 @@ class Tests {
 
 		if (!m.isValid_GPS_Point(p1))
 
-		fail("the 'IsValid_GPS_Point' function doesnt work well");
+			fail("the 'IsValid_GPS_Point' function doesnt work well");
 
 	}
 
