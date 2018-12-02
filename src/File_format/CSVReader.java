@@ -9,6 +9,8 @@ import GIS.layer;
 
 /**
  * This class read from csv and insert all the data to layer.
+ * @author Bar Genish
+ * @author Elyashiv Deri
  */
 public class CSVReader {
 	private layer l=new layer();

@@ -6,6 +6,8 @@ import GIS.GIS_element;
 import GIS.layer;
 /**
  * This class represents copy func, delate func and switch places func.
+ * @author Bar Genish
+ * @author Elyashiv Deri
  */
 
 public class MultAlg {
@@ -14,6 +16,7 @@ public class MultAlg {
 	private GIS_element g;
 	/**
 	 * This func removes this layer from our layer.
+	 * @param lay layer
 	 * @return if we delate the layer or not.
 	 */
 	public boolean remove(layer lay) {
@@ -22,6 +25,8 @@ public class MultAlg {
 	}
 	/**
 	 * This func copy this layer to our layer.
+	 * @param lay layer
+	 * @param gis GIS_element
 	 */
 	public void copy(layer lay, GIS_element gis) {
 		l=lay;
@@ -29,6 +34,8 @@ public class MultAlg {
 	}
 	/**
 	 * This func switch places between GIS_element a to GIS_element b.
+	 * @param a GIS_element
+	 * @param b GIS_element
 	 */
 	public void switchplaces(GIS_element a,GIS_element b) {
 		GIS_element tmp=a;

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 /**
  * This class represents a path- arraylist of 3D point in space.
+ * @author Bar Genish
+ * @author Elyashiv Deri
  */
 public class Path implements Geom_element{
 	private ArrayList<Point3D> arr=new ArrayList<Point3D>();

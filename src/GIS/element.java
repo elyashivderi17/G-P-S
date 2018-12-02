@@ -12,7 +12,7 @@ public class element implements GIS_element {
 	private String MAC , SSID , AuthMode , FirstSeen , Channel , RSSI ,CurrentLatitude,CurrentLongitude ,AltitudeMeters, AccuracyMeters , Type;
 	private Point3D p;
 	private Meta_data data;
-	
+
 	public element(String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String CurrentLatitude,String CurrentLongitude,String AltitudeMeters,String AccuracyMeters ,String Type) {//constractor
 		setMAC(MAC);
 		setSSID(SSID);
@@ -43,26 +43,26 @@ public class element implements GIS_element {
 		setgeom(p);
 		data=new metaData(m);;
 	}
-	 /**
-     * getgeom return our geom element
-     * @return p that represent the point3d of our element  
-     */
+	/**
+	 * getgeom return our geom element
+	 * @return p that represent the point3d of our element  
+	 */
 	@Override
 	public Geom_element getGeom() {
 		return p;
 	}
 	/**
-     * getData return our metadata
-     * @return data that represent the metadata of our element  
-     */
+	 * getData return our metadata
+	 * @return data that represent the metadata of our element  
+	 */
 	@Override
 	public Meta_data getData() {
 		return data;
 	}
-	 /**
-     * tranlase method is to change given Point3D
-     * @param vec is the translated element.
-     */
+	/**
+	 * tranlase method is to change given Point3D
+	 * @param vec is the translated element.
+	 */
 	@Override
 	public void translate(Point3D vec) {
 		MyCoords m=new MyCoords();

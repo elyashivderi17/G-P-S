@@ -6,6 +6,8 @@ import java.util.Random;
 
 /**
  * This class convert single csv file to kml file.
+ * @author Bar Genish
+ * @author Elyashiv Deri
  */
 
 public class Csv2kml {

@@ -7,6 +7,8 @@ import File_format.Csv2kml;
 import GIS.project;
 /**
  * This class get a directory and search recursively all the csv files int the directory and convert them to a new single kml file.
+ * @author Bar Genish
+ * @author Elyashiv Deri
  */
 public class MultiCSV {
 
@@ -38,7 +40,7 @@ public class MultiCSV {
 	}
 	/**
 	 * This help function make a new project from all the csv that we want to convert 
-	 * @param filepath the path of directory that we want to add to our project.
+	 * @param path the path of directory that we want to add to our project.
 	 * @return p project that we want to convert.
 	 */
 	public static project multicsv(String path) {

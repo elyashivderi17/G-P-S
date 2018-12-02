@@ -8,6 +8,8 @@ import Geom.Geom_element;
 import Geom.Point3D;
 /**
  * This class get layer Point3D and distance as double and return new layer with the GIS_element in this distances from the point3D.
+ * @author Bar Genish
+ * @author Elyashiv Deri
  */
 public class SelectByDistance {
 	private layer l;

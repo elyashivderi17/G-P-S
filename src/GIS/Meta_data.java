@@ -3,9 +3,13 @@ package GIS;
 import Geom.Point3D;
 
 public interface Meta_data {
-	/** returns the Universal Time Clock associated with this data; */
+	/** returns the Universal Time Clock associated with this data; 
+	 * @return long the Universal Time Clock associated with this data;
+	 */
 	public long getUTC();
-	/** return a String representing this data */
+	/** return a String representing this data 
+	 *@return String representing this data 
+	 */
 	public String toString();
 	/**
 	 * @return the orientation: yaw, pitch and roll associated with this data;

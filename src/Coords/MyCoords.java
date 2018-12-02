@@ -12,13 +12,22 @@ import com.sun.javafx.scene.paint.GradientUtils.Point;
 
 import Coords.coords_converter;
 
-
+/**
+ *  This class implements coords_converter.
+ * @author Bar Genish
+ * @author Elyashiv Deri
+ */
 
 public class MyCoords implements coords_converter {
 
-	
+
 
 	final static int world = 6371000;
+	/** computes a new point which is the gps point transformed by a 3D vector (in meters)
+	 * @param gps Point3D
+	 * @param local_vector_in_meter Point3D
+	 * @return Point3D new point which is the gps point transformed by a 3D vector (in meters).
+	 */
 
 	public Point3D add(Point3D gps, Point3D local_vector_in_meter) {
 
@@ -27,7 +36,7 @@ public class MyCoords implements coords_converter {
 		if(!isValid_GPS_Point(gps)) 
 
 			return null;
-		
+
 
 		double meterTolat =Math.asin(local_vector_in_meter.x()/world)*(180/Math.PI);
 
@@ -53,7 +62,7 @@ public class MyCoords implements coords_converter {
 
 		}
 
-		 if(x<-180) {
+		if(x<-180) {
 
 			x=(y+180)+180;
 
@@ -67,8 +76,12 @@ public class MyCoords implements coords_converter {
 
 		return null;
 
-		}
-
+	}
+	/** computes the 3D distance (in meters) between the two gps like points 
+	 * @param gps0 Point3D
+	 * @param gps1 Point3D
+	 * @return double: the 3D distance (in meters) between the two gps like points 
+	 */
 
 	public double distance3d(Point3D gps0, Point3D gps1) {
 
@@ -91,7 +104,11 @@ public class MyCoords implements coords_converter {
 		return Math.sqrt((tometer1*tometer1) + (tometer2*tometer2));
 
 	}
-
+	/** computes the 3D vector (in meters) between two gps like points 
+	 * @param gps0 Point3D
+	 * @param gps1 Point3D
+	 * @return Point3D the 3D vector (in meters) between two gps like points 
+	 */
 
 	public Point3D vector3D(Point3D gps0, Point3D gps1) {
 
@@ -121,7 +138,12 @@ public class MyCoords implements coords_converter {
 
 	}
 
-
+	/** computes the polar representation of the 3D vector be gps0--gps1 
+	 * Note: this method should return an azimuth (aka yaw), elevation (pitch), and distance
+	 * @param gps0 Point3D
+	 * @param gps1 Point3D
+	 * @return double[]: an azimuth (aka yaw), elevation (pitch), and distance
+	 */
 
 	public  double[] azimuth_elevation_dist(Point3D gps0, Point3D gps1) {
 
@@ -136,7 +158,11 @@ public class MyCoords implements coords_converter {
 		return ans;
 
 	}
-
+	/**
+	 * return true if this point is a valid lat, lon , lat coordinate: [-180,+180],[-90,+90],[-450, +inf]
+	 * @param p Point3D
+	 * @return boolean if this point is a valid lat, lon , lat coordinate
+	 */
 
 	public boolean isValid_GPS_Point(Point3D p) {
 

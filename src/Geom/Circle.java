@@ -1,6 +1,8 @@
 package Geom;
 /**
  * This class represents Circle.
+ * @author Bar Genish
+ * @author Elyashiv Deri
  * https://en.wikipedia.org/wiki/Circle
  */
 public class Circle implements Geom_element {

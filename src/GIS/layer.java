@@ -13,8 +13,7 @@ public class layer implements GIS_layer {
 	private Meta_data mt; 
 	/**
 	 * add method adds gis_element
-	 * @param args0 is gis_ element that we want to add.
-	 * @return arr ArrayList<GIS_element> arr with the new gis_element.
+	 * @return arr with the new gis_element.
 	 */
 	@Override
 	public boolean add(GIS_element arg0) {
@@ -22,8 +21,7 @@ public class layer implements GIS_layer {
 	}
 	/**
 	 * add method adds all collection of gis_element.
-	 * @param args0 is collection of gis_element that we want to add to our layer.
-	 * @return arr ArrayList<GIS_element> arr with the new collection of gis_element.
+	 * @return arr with the new collection of gis_element.
 	 */
 	@Override
 	public boolean addAll(Collection<? extends GIS_element> arg0) {
@@ -39,7 +37,6 @@ public class layer implements GIS_layer {
 	}
 	/**
 	 * contains method check if arg0 is in our array.
-	 * @param args0 is object of gis_element that we want to check on our array.
 	 * @return boolean if the object exist.
 	 */
 	@Override
@@ -48,7 +45,6 @@ public class layer implements GIS_layer {
 	}
 	/**
 	 * containsAll method check if we have similar collection in our array.
-	 * @param args0 is object of gis_element that we want to check on our array.
 	 * @return boolean if all the collection exist.
 	 */
 	@Override
@@ -72,8 +68,7 @@ public class layer implements GIS_layer {
 	}
 	/**
 	 * remove method remove gis_element
-	 * @param args0 is gis_ element that we want to remove from our array.
-	 * @return arr ArrayList<GIS_element> arr without arg0.
+	 * @return arr without arg0.
 	 */
 	@Override
 	public boolean remove(Object arg0) {
@@ -81,8 +76,7 @@ public class layer implements GIS_layer {
 	}
 	/**
 	 * removeAll method remove collection of gis_element
-	 * @param args0 is collections of gis_ element that we want to remove from our array.
-	 * @return arr ArrayList<GIS_element> arr without arg0(the collection of gis_element).
+	 * @return arr without arg0(the collection of gis_element).
 	 */
 	@Override
 	public boolean removeAll(Collection<?> arg0) {
@@ -90,8 +84,8 @@ public class layer implements GIS_layer {
 	}
 	/**
 	 * retainAll method retain collection of gis_element
-	 * @param args0 is collections of gis_ element that we want to retain from our array.
-	 * @return arr ArrayList<GIS_element>.
+	 * @param arg0 of gis_ element that we want to retain from our array.
+	 * @return arr.
 	 */
 	@Override
 	public boolean retainAll(Collection<?> arg0) {

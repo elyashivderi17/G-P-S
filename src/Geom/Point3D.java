@@ -6,6 +6,8 @@ public class Point3D implements Geom_element, Serializable {
 
 	/**
 	 * This class represents a 3D point in space.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
 	 */
 	private static final long serialVersionUID = 1L;
 	private double _x,_y,_z;
@@ -100,7 +102,11 @@ public class Point3D implements Geom_element, Serializable {
 
 	public final static int DOWN = 6, UP = 7;
 
-	/** return up iff this point is above the SEGMENT (not the line) */
+	/** return up if this point is above the SEGMENT (not the line)
+	 * @param a Point3D
+	 * @param b Point3D
+	 * @return flag-if this point is above the SEGMENT (not the line)
+	 */
 	public int pointLineTest2(Point3D a, Point3D b) {
 		int flag = this.pointLineTest(a,b);
 		if(a._x < b._x ) {
@@ -189,14 +195,20 @@ public class Point3D implements Geom_element, Serializable {
 	}	
 
 	/** computes the angleXY between p1 and p2 in RADIANS: <br><br>
-	up:(PI/2)  , down (-PI/2) , right(0),  left(+- PI).   [-PI, +PI]	*/
+	up:(PI/2)  , down (-PI/2) , right(0),  left(+- PI).   [-PI, +PI]	
+	 *@param p Point3D
+	 *@return double the angleXY between p1 and p2 in RADIANS
+	 */
 	public double angleXY(Point3D p) {
 		if(p==null) throw new RuntimeException("** Error: Point3D angle got null **");
 		return Math.atan2((p._y-_y), (p._x-_x));
 	}
 
 	/** computes the angleXY between p1 and p2 in RADIANS: <br><br>
-	up:(PI/2)  , down (1.5PI) , right(0),  left(PI).   [0,2PI].	*/
+	up:(PI/2)  , down (1.5PI) , right(0),  left(PI).   [0,2PI].	
+	 *@param p Point3D
+	 *@return double the angleXY between p1 and p2 in RADIANS
+	 */
 	public double angleXY_2PI(Point3D p) {
 		if(p==null) throw new RuntimeException("** Error: Point3D angle got null **");
 		double ans = Math.atan2((p._y-_y), (p._x-_x));
@@ -204,13 +216,17 @@ public class Point3D implements Geom_element, Serializable {
 		return ans;
 	}
 
-	/** computes the angleZ between p1 and p2 in RADIANS */ 							
+	/** computes the angleZ between p1 and p2 in RADIANS 
+	 *@param p Point3D
+	 *@return double the angleZ between p1 and p2 in RADIANS
+	 * 
+	 */ 							
 	public double angleZ(Point3D p) {
 		if(p==null) throw new RuntimeException("** Error: Point3D angleZ got null **");
 		return Math.atan2((p._z-_z), this.distance2D(p));
 	}	
 
-	/** return the (planer angle of the vector between this --> p, in DEGREES, in a
+	/** return the (planer angle of the vector between this -- p, in DEGREES, in a
 	 * compass order: north 0, east 90, south 180, west 270.
 	 * @param p is the end point of the vector (z value is ignored). 
 	 * @return angle in compass styye [0,360).
@@ -225,8 +241,9 @@ public class Point3D implements Geom_element, Serializable {
 	}
 
 	/** 
-	 * return the vertical angles in DEGREES of the vector this-->p
-	 * 
+	 * return the vertical angles in DEGREES of the vector this--p
+	 * @param p Point3D
+	 * @return double the vertical angles in DEGREES of the vector this--p
 	 * */
 	public double up_angle(Point3D p) {
 		double ans = 0;
@@ -234,8 +251,10 @@ public class Point3D implements Geom_element, Serializable {
 		return Math.toDegrees(ans);
 	}
 
-	/** return the vertical angles in DEGREES of the vector this-->p, 
+	/** return the vertical angles in DEGREES of the vector this--p, 
 	 *  @param h: is the extra height of the point p (used by GISElement).
+	 *  @param p Point3D
+	 *  @return double the vertical angles in DEGREES of the vector this--p.
 	 * */
 	public double up_angle(Point3D p, double h) {
 		double ans = 0;
@@ -243,12 +262,18 @@ public class Point3D implements Geom_element, Serializable {
 		return Math.toDegrees(ans);
 	}
 
-	/** transform from radians to angles */
+	/** transform from radians to angles .
+	 * @param a double.
+	 * @return double: transform from radians to angles.
+	 */
 	public static double r2d(double a) {
 		return Math.toDegrees(a);
 	}
 
-	/** transform from radians to angles */
+	/** transform from radians to angles.
+	 * @param a double.
+	 * @return double: transform from radians to angles.
+	 */
 	public static double d2r(double a) { 
 		return Math.toRadians(a);
 	}
@@ -265,5 +290,5 @@ public class Point3D implements Geom_element, Serializable {
 		this._z=R*Math.sin(lat);
 
 	}
-	
+
 }

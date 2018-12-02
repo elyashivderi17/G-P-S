@@ -10,6 +10,8 @@ import Geom.Point3D;
 public class SelectByRectangle {
 	/**
 	 * This class get layer and square and return new layer with the GIS_element in this square.
+	 * @author Bar Genish
+	 * @author Elyashiv Deri
 	 */
 	private layer l;
 	private Point3D start;
