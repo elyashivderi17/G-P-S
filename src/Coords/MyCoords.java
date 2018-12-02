@@ -20,76 +20,104 @@ public class MyCoords implements coords_converter {
 
 	final static int world = 6371000;
 
-
-
 	public Point3D add(Point3D gps, Point3D local_vector_in_meter) {
 
-		double comp = local_vector_in_meter.x() / world;
+		double lonNorm=Math.cos(gps.x()*(Math.PI/180));
 
-		double lat = gps.x() + (comp * 180/Math.PI);
+		if(!isValid_GPS_Point(gps)) 
 
-		double comp2 = (local_vector_in_meter.y() + (comp * 180 / Math.PI));
+			return null;
+		
 
-		double lon = gps.y() + (comp2 * 180 / Math.PI);
+		double meterTolat =Math.asin(local_vector_in_meter.x()/world)*(180/Math.PI);
 
-		double alt = gps.z() + local_vector_in_meter.z();
+		double meterTolong=Math.asin(local_vector_in_meter.y()/world*lonNorm)*(180/Math.PI);
 
-		return new Point3D(lat, lon, alt);
+		double x=meterTolat+gps.x();
 
-	}
+		double y=meterTolong+gps.y();
 
+		double z=gps.z()+local_vector_in_meter.z();
+
+		if((y>90)||(y<-90)) { 
+
+			System.out.println("Invalid x");
+
+			return null;
+
+		}
+
+		if(x>180) {
+
+			x=((x+180)%360)-180;
+
+		}
+
+		 if(x<-180) {
+
+			x=(y+180)+180;
+
+		}
+
+		Point3D negps = new Point3D (x,y,z);
+
+		if(isValid_GPS_Point(negps))
+
+			return negps;
+
+		return null;
+
+		}
 
 
 	public double distance3d(Point3D gps0, Point3D gps1) {
 
+		double LonNorm=Math.cos(gps0.x()*Math.PI/180);
 
-		double theDistance = (Math.sin(Math.toRadians(gps0.x())) *
+		double diff = gps1.x()-gps0.x();
 
-				Math.sin(Math.toRadians(gps1.x()))) +
+		double radian = (diff*Math.PI)/180;
 
-				(Math.cos(Math.toRadians(gps0.x())) * Math.cos(Math.toRadians(gps1.x())) *
+		double tometer1 = Math.sin(radian)*world;
 
-				Math.cos(Math.toRadians(gps0.y() - gps1.y() )));
+		double diff2 = gps1.y()-gps0.y();
+
+		double radian2 = (diff2*Math.PI)/180;
+
+		double tometer2 = Math.sin(radian2)*world*LonNorm;
 
 
 
-		return new Double((Math.toDegrees(Math.acos(theDistance))) * 69.09)* 1.60934;
+		return Math.sqrt((tometer1*tometer1) + (tometer2*tometer2));
 
 	}
-	
 
 
 	public Point3D vector3D(Point3D gps0, Point3D gps1) {
 
-	    double b = world + gps1.x();
+		double LonNorm=Math.cos(gps0.x()*Math.PI/180);
 
-	    double c = world + gps0.x();
+		double diff = gps1.x()-gps0.x();
 
-	    double b2 = b * b;
+		double radian = (diff*Math.PI)/180;
 
-	    double c2 = c * c;
+		double tometer1 = Math.sin(radian)*world;
 
-	    double bc2 = 2 * b * c;
+		double diff2 = gps1.y()-gps0.y();
 
-	    double dis = gps1.y() - gps0.y();
+		double radian2 = (diff2*Math.PI)/180;
 
-	    dis = dis * Math.PI / 180;
+		double tometer2 = Math.sin(radian2)*world*LonNorm;
 
-	    double cos = 1 - dis * dis / 2; 
+		double diff3 = gps1.z()-gps0.z();
 
-	    double x = Math.sqrt(b2 + c2 - bc2 * cos);
 
-	    dis = gps1.x() - gps0.x();
 
-	    dis = dis * Math.PI / 180;
+		Point3D vector3d=new Point3D (tometer1 , tometer2, diff3);
 
-	    cos = 1 - dis * dis/2; 
 
-	    double y = Math.sqrt(b2 + c2 - bc2 * cos);
 
-	    double z = gps1.z() - gps0.z();
-
-	    return new Point3D(x, y, z);
+		return vector3d;
 
 	}
 
