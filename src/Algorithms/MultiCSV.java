@@ -71,8 +71,4 @@ public class MultiCSV {
 		return p;
 	}
 
-	public static void main(String[] args) {
-		project p=multicsv("C:\\Users\\barge\\Desktop\\‏‏תיקיה חדשה");
-		multcsv2kml(p,"C:\\Users\\barge\\Desktop\\‏‏תיקיה חדשה");
-	}
 }

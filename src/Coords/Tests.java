@@ -24,8 +24,6 @@ class Tests {
 		Point3D p4=temp.add(p1, p3);
 		
 		if(!p2.equals(p4)) {
-			System.out.println(p2);
-			System.out.println(p4);
 
 			fail("this function doesnt work well");
 		}
