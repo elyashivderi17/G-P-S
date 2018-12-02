@@ -12,7 +12,7 @@ class Tests {
 	@Test
 
 	void testAdd() {
-
+ 
 		Point3D p1=new Point3D(32.103315,35.209039,670.0);
 
 		Point3D p2=new Point3D(32.10635200000035,35.20522500000041,650.0);
@@ -20,7 +20,9 @@ class Tests {
 		Point3D p3=new Point3D(337.6989921,-359.2492069,-20);
 
 		MyCoords m=new MyCoords();
+		
 		Point3D p4=m.add(p1, p3);
+		
 		if(!p2.equals(p4)) {
 
 			fail("this function doesnt work well");
