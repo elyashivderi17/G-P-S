@@ -1,17 +1,16 @@
 package Coords;
 
-
 import Geom.Point3D;
 
 import java.util.Hashtable;
 
 import java.util.Map;
 
-
-
 import com.sun.javafx.geom.AreaOp.AddOp;
 
 import com.sun.javafx.scene.paint.GradientUtils.Point;
+
+import Coords.coords_converter;
 
 
 
@@ -19,15 +18,13 @@ public class MyCoords implements coords_converter {
 
 	
 
-	final static int earth_rad = 6371000;
+	final static int world = 6371000;
 
 
-
-	@Override
 
 	public Point3D add(Point3D gps, Point3D local_vector_in_meter) {
 
-		double comp = local_vector_in_meter.x() / earth_rad;
+		double comp = local_vector_in_meter.x() / world;
 
 		double lat = gps.x() + (comp * 180/Math.PI);
 
@@ -42,7 +39,6 @@ public class MyCoords implements coords_converter {
 	}
 
 
-	@Override
 
 	public double distance3d(Point3D gps0, Point3D gps1) {
 
@@ -63,15 +59,11 @@ public class MyCoords implements coords_converter {
 	
 
 
-	@Override
 	public Point3D vector3D(Point3D gps0, Point3D gps1) {
 
+	    double b = world + gps1.x();
 
-	    double b = earth_rad + gps1.x();
-
-	    double c = earth_rad + gps0.x();
-
-
+	    double c = world + gps0.x();
 
 	    double b2 = b * b;
 
@@ -79,43 +71,23 @@ public class MyCoords implements coords_converter {
 
 	    double bc2 = 2 * b * c;
 
+	    double dis = gps1.y() - gps0.y();
 
+	    dis = dis * Math.PI / 180;
 
-	    // Longitudinal calculations.
-
-	    double alpha = gps1.y() - gps0.y();
-
-	    // Conversion to radian.
-
-	    alpha = alpha * Math.PI / 180;
-
-	    // Small-angle approximation.
-
-	    double cos = 1 - alpha * alpha / 2; //Math.cos(alpha);
-
-	    // Use the law of cosines / Al Kashi theorem.
+	    double cos = 1 - dis * dis / 2; 
 
 	    double x = Math.sqrt(b2 + c2 - bc2 * cos);
 
+	    dis = gps1.x() - gps0.x();
 
+	    dis = dis * Math.PI / 180;
 
-	    // Repeat for latitudinal calculations
-
-	    alpha = gps1.x() - gps0.x();
-
-	    alpha = alpha * Math.PI / 180;
-
-	    cos = 1 - alpha * alpha/2; //Math.cos(alpha);
+	    cos = 1 - dis * dis/2; 
 
 	    double y = Math.sqrt(b2 + c2 - bc2 * cos);
 
-
-
-	    // Obtain vertical difference, too
-
 	    double z = gps1.z() - gps0.z();
-
-
 
 	    return new Point3D(x, y, z);
 
@@ -123,10 +95,6 @@ public class MyCoords implements coords_converter {
 
 
 
-	/** computes the polar representation of the 3D vector be gps0-->gps1 
-
-	 * Note: this method should return an azimuth (aka yaw), elevation (pitch), and distance*/
-	@Override
 	public  double[] azimuth_elevation_dist(Point3D gps0, Point3D gps1) {
 
 		double [] ans = {0,0,0};
@@ -141,16 +109,7 @@ public class MyCoords implements coords_converter {
 
 	}
 
-	/**
 
-	 * return true if this point is a valid lat, lon , lat coordinate: [-180,+180],[-90,+90],[-450, +inf]
-
-	 * @param p
-
-	 * @return
-
-	 */
-	@Override
 	public boolean isValid_GPS_Point(Point3D p) {
 
 		if(p.x() >= -180 && p.x() <= 180 && p.y() >= -90 && p.y() <= 90 && p.z() >= -450) {

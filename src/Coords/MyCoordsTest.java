@@ -1,9 +1,11 @@
 package Coords;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
 import Geom.Point3D;
 
 
@@ -11,112 +13,68 @@ import Geom.Point3D;
 class MyCoordsTest {
 
 
-	@Test
-	void isValid_GPS_PointTest() {
 
-		MyCoords c=new MyCoords();
+	Point3D Point_1 = new Point3D(32.103315,35.209039,670);
 
-		Point3D p=new Point3D(50,5);
+	Point3D Point_2 = new Point3D(32.106352,35.205225,650);
 
-		boolean x=c.isValid_GPS_Point(p);
+	Point3D temp = new Point3D(337.6989921,-359.2492069,-20);
 
-		assertTrue(x);
+	MyCoords vec = new MyCoords();
 
-	}
 
-	
+
+
 
 	@Test
-	void addTest() {
 
-		MyCoords c=new MyCoords();
+	void testAdd() {
 
-		Point3D p=new Point3D(34.8085 ,32.16275);
+		Point3D ans = new Point3D(32.10635199999893,35.205225000003225,650);
 
-		Point3D v=new Point3D(500, 500);
-
-	
-
-		Point3D out = c.add(p, v);
-
-//		the right answer as shown in google earth (with those parameters)
-
-		Point3D rightAns= new Point3D(34.813006686487164,32.16656500793215, 6356752.314199897); 
-
-		
-
-		assertEquals(out.toString(),rightAns.toString());
-
-		
-
-}
-
-	@Test
-	void distance3dTest() {
-
-		MyCoords c=new MyCoords();
-
-		// p=new Point3D(34.814167,32.171111,0 );
-
-		//Point3D p1= new Point3D(34.819444,32.171111,0);
-
-		Point3D p1= new Point3D(0,0,0);
-		
-		Point3D p=new Point3D(1,2,3);
-		double dis = c.distance3d(p, p1);
-
-		System.out.println("dis: "+dis);
-		// the real distance between the two points
-		double rightAns = 0.5277; 
-
-		
-
-	assertEquals(dis,rightAns,0);
-
-	}
-
-	@Test
-	void vector3DTest() {
-
-		MyCoords c=new MyCoords();
-
-		Point3D p=new Point3D(34.8085 ,32.16275);
-
-		Point3D p1= new Point3D(34.813006686487164,32.16656500793215, 6356752.314199897); 
-
-		Point3D v = c.vector3D(p, p1);
-
-		Point3D rightAns = new Point3D(500,500);
-
-		assertEquals(v.x(),rightAns.x(), 0.01);
-
-		assertEquals(v.y(),rightAns.y(), 0.01);
-
-		assertEquals(v.z(),rightAns.z(), 0.01);
-
-
-
-
-
-	}
-
-	@Test
-	void azimuth_elevation_distTest() {
-
-		MyCoords c=new MyCoords();
-
-		Point3D p=new Point3D(34.8085 ,32.16275);
-
-	Point3D p1= new Point3D(34.813006686487164,32.16656500793215, 6356752.314199897);
-
-	double [] arr = c.azimuth_elevation_dist(p, p1);
-
-		
-
-		
+		assertTrue(ans.equals(vec.add(Point_1, temp)));
 
 	}
 
 
 
+	@Test
+
+	void testDistance3d() {
+
+		assertEquals(493.052,vec.distance3d(Point_1, Point_2),0.1);
+
+	}
+
+
+
+	@Test
+	void testVector3D() {
+		
+		Point3D ans = new Point3D(337.69899206128815,-359.24920693881893,-20.0);
+
+		assertTrue(ans.equals(vec.vector3D(Point_1, Point_2)));
+	}
+
+
+
+	@Test
+	void testAzimuth_elevation_dist() {
+
+		double ans[] =  {313.229882305353, -89.98603287888018, 493.0523318324134};
+
+		double array[] =vec.azimuth_elevation_dist(Point_1, Point_2);
+
+		assertEquals(Arrays.toString(ans),Arrays.toString(array));
+
+	}
+
+
+
+	@Test
+
+	void testIsValid_GPS_Point() {
+
+		assertTrue(vec.isValid_GPS_Point(Point_1)&&vec.isValid_GPS_Point(Point_1));
+	}
 }
