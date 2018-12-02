@@ -1,24 +1,31 @@
 package Geom;
 
 public class Line implements Geom_element {
+	/**
+	 * This class represents a line-2 points of 3D point in space.
+	 */
 	private Point3D start;
 	private Point3D end;
 
-	public Line(Point3D start,Point3D end) {
+	public Line(Point3D start,Point3D end) {//constractor
 		this.start=start;
 		this.end=end;
 	}
 
-	public Line(double xstart,double ystart,double zstart,double xend,double yend,double zend) {
+	public Line(double xstart,double ystart,double zstart,double xend,double yend,double zend) {//constractor
 		this.start=new Point3D(xstart,ystart,zstart);
 		this.end=new Point3D(xend,yend,zend);
 	}
-
+	/** 
+	 * return the distance3d between the point3d p to our line.
+	 * */
 	@Override
 	public double distance3D(Point3D p) {
 		return dist3d(new Line(start,end),p);
 	}
-
+	/** 
+	 * return the distance2d between the point3d p to our line.
+	 * */
 	@Override
 	public double distance2D(Point3D p) {
 		return dist2d(new Line(start,end),p);

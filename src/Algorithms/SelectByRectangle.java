@@ -8,14 +8,21 @@ import Geom.Geom_element;
 import Geom.Point3D;
 
 public class SelectByRectangle {
+	/**
+	 * This class get layer and square and return new layer with the GIS_element in this square.
+	 */
 	private layer l;
 	private Point3D start;
 	private Point3D end;
-	public SelectByRectangle(layer lay,Point3D a,Point3D b) {
+	public SelectByRectangle(layer lay,Point3D a,Point3D b) {//constractor
 		l=lay;
 		start=a;
 		end=b;
 	}
+	/**
+	 * This func returns new layer with the GIS_element between our 2 point3d.
+	 * @return new layer with the GIS_element between our 2 point3d.
+	 */
 	public layer calrect() {
 		layer lay=new layer();
 		Iterator<GIS_element>runner=l.iterator();
@@ -26,6 +33,11 @@ public class SelectByRectangle {
 		}
 		return lay;
 	}
+	/**
+	 * help fun that return if the GIS_element is in the square or not.
+	 * @return if the GIS_element in the square or not.
+	 * @param g the Geom_element that we have to check.
+	 */
 	private Boolean contains(Geom_element g) {
 		Point3D[] edges = new Point3D[7];
 		edges[0] = start;

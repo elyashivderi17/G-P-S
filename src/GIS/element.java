@@ -4,8 +4,7 @@ import Coords.MyCoords;
 import Geom.Geom_element;
 import Geom.Point3D;
 /**
- * This class represents a element with  geometric representation and meta data such as:
- * Orientation, color, string, timing...
+ *  This class implements GIS_element functions.
  * @author Bar Genish
  * @author Elyashiv Deri
  */
@@ -13,7 +12,8 @@ public class element implements GIS_element {
 	private String MAC , SSID , AuthMode , FirstSeen , Channel , RSSI ,CurrentLatitude,CurrentLongitude ,AltitudeMeters, AccuracyMeters , Type;
 	private Point3D p;
 	private Meta_data data;
-	public element(String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String CurrentLatitude,String CurrentLongitude,String AltitudeMeters,String AccuracyMeters ,String Type) {
+	
+	public element(String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String CurrentLatitude,String CurrentLongitude,String AltitudeMeters,String AccuracyMeters ,String Type) {//constractor
 		setMAC(MAC);
 		setSSID(SSID);
 		setAuthMode(AuthMode);
@@ -28,7 +28,7 @@ public class element implements GIS_element {
 		setgeom(CurrentLatitude,CurrentLongitude,AltitudeMeters);
 		data=new metaData();;
 	}
-	public element(Point3D p,metaData m,String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String AccuracyMeters ,String Type) {
+	public element(Point3D p,metaData m,String MAC ,String SSID ,String AuthMode ,String FirstSeen ,String Channel ,String RSSI ,String AccuracyMeters ,String Type) {//constractor
 		setMAC(MAC);
 		setSSID(SSID);
 		setAuthMode(AuthMode);
@@ -43,29 +43,39 @@ public class element implements GIS_element {
 		setgeom(p);
 		data=new metaData(m);;
 	}
-
-	public void setgeom(String currentLatitude2, String currentLongitude2, String altitudeMeters2) {
-		p=new Point3D(Double.parseDouble(CurrentLatitude),Double.parseDouble(CurrentLongitude),Double.parseDouble(AltitudeMeters));
-
-	}
-	public void setgeom(Point3D p2) {
-		p=new Point3D(p2);
-	}
+	 /**
+     * getgeom return our geom element
+     * @return p that represent the point3d of our element  
+     */
 	@Override
 	public Geom_element getGeom() {
 		return p;
 	}
-
+	/**
+     * getData return our metadata
+     * @return data that represent the metadata of our element  
+     */
 	@Override
 	public Meta_data getData() {
 		return data;
 	}
-
+	 /**
+     * tranlase method is to change given Point3D
+     * @param vec is the translated element.
+     */
 	@Override
 	public void translate(Point3D vec) {
 		MyCoords m=new MyCoords();
 		Point3D p=m.add(this.p,vec );
 		this.p=new Point3D(p);
+	}
+	//getters and setters
+	public void setgeom(String currentLatitude2, String currentLongitude2, String altitudeMeters2) {//set geom
+		p=new Point3D(Double.parseDouble(CurrentLatitude),Double.parseDouble(CurrentLongitude),Double.parseDouble(AltitudeMeters));
+
+	}
+	public void setgeom(Point3D p2) {//set geom
+		p=new Point3D(p2);
 	}
 
 	public String getCurrentLatitude() {
@@ -156,6 +166,10 @@ public class element implements GIS_element {
 	public void setData(Meta_data data) {
 		this.data = data;
 	}
+	/**
+	 * write the element as string
+	 * @return string of all the element
+	 */
 	public String toString() {
 		String s=MAC+","+ SSID+","+AuthMode+","+FirstSeen+","+Channel+","+RSSI+","+CurrentLatitude+","+CurrentLongitude+","+AltitudeMeters+","+AccuracyMeters+","+Type;
 		return s;

@@ -7,7 +7,7 @@ import java.util.Random;
 
 
 public class Csv2kml {
-	//private static int count;
+	
 	private static void writeFileKML(ArrayList<String[]> a, String output) {
 		ArrayList<String> content = new ArrayList<String>();
 		String kmlstart = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
@@ -18,9 +18,7 @@ public class Csv2kml {
 		try{
 			FileWriter fw = new FileWriter(output);
 			BufferedWriter bw = new BufferedWriter(fw);
-			//String[]arr= {"red","yellow","green"};
 			for (int i = 1; i < a.size(); i++) {
-				System.out.println(a.size());
 				String[] s = a.get(i);
 				String kmlelement ="<Placemark>\n" +
 						"<name><![CDATA["+s[1]+"]]></name>\n" +
@@ -31,7 +29,6 @@ public class Csv2kml {
 						"</Placemark>";
 				content.add(kmlelement);
 			}
-			//count++;
 			content.add(kmlend);
 			String csv = content.toString().replaceAll("</Placemark>, <Placemark>", "</Placemark><Placemark>").replaceAll("</Placemark>, ", "</Placemark>").replaceAll(", <Placemark>", "<Placemark>");
 			csv = csv.substring(1, csv.length()-1);
@@ -67,16 +64,4 @@ public class Csv2kml {
 		ArrayList<String[]> a = getCSVList(csvPath);
 		writeFileKML(a, kmlPath);
 	}
-	//public int getCount() {
-	//	return count;
-	//}
-	//public void setCount(int count) {
-	//	if(count==3)this.count=0;
-	//	else
-	//	this.count = count;
-//	}
-	//public static void main(String[] args) {
-	//
-	//	convertCsv2Kml("C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 2\\Ex2\\data\\WigleWifi_20171203085618.csv","C:\\Users\\barge\\Desktop\\מונחה עצמים מטלה 2\\Ex2\\data\\WigleWifi_20171203085618.kml");
-	//}
 }
