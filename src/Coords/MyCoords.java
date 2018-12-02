@@ -37,13 +37,13 @@ public class MyCoords implements coords_converter {
 
 
 	public double distance3d(Point3D gps0, Point3D gps1) {
+		return Math.sqrt(Math.pow(gps0.x()-gps1.x(), 2)+Math.pow(gps0.y()-gps1.y(), 2)+Math.pow(gps0.z()-gps1.z(), 2));
+		//Point3D p0 = gps0.GpsToMeter();
 
-		Point3D p0 = gps0.GpsToMeter();
-
-		Point3D p1 = gps1.GpsToMeter();
+		//Point3D p1 = gps1.GpsToMeter();
 		//return gps0.distance3D(gps1);
 
-		return p0.distance3D(p1);
+		//return p0.distance3D(p1);
 
 	}
 
