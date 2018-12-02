@@ -254,124 +254,16 @@ public class Point3D implements Geom_element, Serializable {
 	}
 
 
+	public void PolarToCartes() {
 
-	public Point3D meterToGps() {		
+		double R=6371000,lat=this._x,lon=this._y;
 
-		double	r = Math.sqrt(_x * _x + _y * _y + _z * _z);
+		this._x=R*Math.cos(lat)*Math.cos(lon);
 
-		double longitude = Math.acos(_x / Math.sqrt(_x * _x + _y * _y)) * (_y < 0 ? -1 : 1);
+		this._y=R*Math.cos(lat)*Math.sin(lon);
 
-		double latidude= Math.acos(_z / r);
-
-		return new Point3D (longitude,latidude);
-
+		this._z=R*Math.sin(lat);
 
 	}
-
-	public Point3D meterToGps1() {		
-
-		double radius = Math.sqrt(_x * _x + _y * _y + _z * _z);
-
-		double theta = Math.atan2(_y, _x);
-
-		double phi = Math.acos(_z / radius);
-
-		Point3D output = new Point3D (radius, theta, phi);
-
-		return  output;
-
-	}
-
-	//https://stackoverflow.com/questions/10868135/cartesian-to-polar-3d-coordinates
-	public Point3D GpsToMeter () {	
-
-		final double r = 6371000;
-
-		double Gps_x = r * Math.sin(_x) * Math.cos(_y);
-
-		double Gps_y = r * Math.sin(_x) * Math.sin(_y);
-
-		double Gps_z =  Math.cos(_x);
-
-		return new Point3D(Gps_x,Gps_y,Gps_z);
-
-	}
-
-	//https://www.colby.edu/chemistry/Colby%20Compass/AcqBathometricData.pdf
-	public Point3D GeoToMer() {
-
-		double RadToDeg = 57.2957795132;
-
-		double q =Math.atan(_z/Math.sqrt((_x*_x+_y*_y)));
-
-		double DegToRad = 0.0174532925199;
-
-		double b = 6356752.3142; 
-
-		double PI = 3.141592654;
-
-		double HALF_PI = 1.570796327;
-
-		double GeoToMerX = _x * DegToRad * b;
-
-		double	GeoToMerY = b * (Math.log((Math.tan((_y * DegToRad + HALF_PI) * 0.5))));
-
-		double Gps_z =  Math.cos(_x);
-
-		System.out.println(GeoToMerY);
-
-		Point3D p = new Point3D(GeoToMerX, GeoToMerY,Gps_z);
-
-		return p ;
-
-	}
-
-	// https://www.colby.edu/chemistry/Colby%20Compass/AcqBathometricData.pdf
-	public Point3D MerToGeo() { 
-
-		double	RadToDeg = 57.29577951322447;
-
-		double DegToRad = 0.0174532925199;
-
-		double b = 6356752.3142;
-
-		double	PI = 3.141592654;
-
-		double q =Math.atan(_z/Math.sqrt((_x*_x+_y*_y)));
-
-		double	HALF_PI = 1.570796327;
-
-		double MerToGeoLong = _x * RadToDeg / b;
-
-		double MerToGeoLat = RadToDeg * (2 * Math.atan(Math.exp(_y / b)) - HALF_PI);
-
-		double n =Math.atan(_z/Math.sqrt((_x*_x+_y*_y)));
-
-		double z = b * Math.cos(q);
-
-		Point3D output = new Point3D(MerToGeoLong,MerToGeoLat,z);	
-
-		return output;
-
-	}
-
-	public Point3D meterToGps2() {	
-
-		double r = Math.sqrt(_x * _x + _y * _y + _z * _z);
-
-		double q =Math.atan(_z/Math.sqrt((_x*_x+_y*_y)));
-
-		double f = Math.atan(_y/_x);
-
-		double x = r * Math.sin(q)* Math.cos(f);
-
-		double y = r * Math.sin(q) * Math.sin(f);
-
-		double z = r * Math.cos(q);
-
-		Point3D output = new Point3D(x,y,z);
-
-		return output;
-
-	}
+	
 }
