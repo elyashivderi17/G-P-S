@@ -24,6 +24,8 @@ class Tests {
 		Point3D p4=temp.add(p1, p3);
 		
 		if(!p2.equals(p4)) {
+			System.out.println(p2);
+			System.out.println(p4);
 
 			fail("this function doesnt work well");
 		}
@@ -79,7 +81,6 @@ class Tests {
 		MyCoords temp =new MyCoords();
 
 		if(!Arrays.equals(p3, temp.azimuth_elevation_dist(p1, p2))) {
-
 			fail("the 'Azimuth_elevation_dist' function doesnt work well");
 		}
 	}
