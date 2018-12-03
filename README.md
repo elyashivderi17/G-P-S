@@ -26,5 +26,5 @@ Geographic information system, divided to layers, with refernce to time, place t
 https://susdesign.com/popups/sunangle/azimuth.php
 
 
-### That's a distance?
+### That's a distance
 https://he.wikipedia.org/wiki/מרחק
